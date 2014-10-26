@@ -40,9 +40,7 @@ void Create_Cool_Palette(void){
 } // end Create_Cool_Palette
 
 void redraw_road(curr_color_index){
-  al_clear_to_color(al_map_rgb(0,0,0));
-  int index,           // loop var
-      x1=150,            // x1 & x2 are the edges of the current piece of the road
+  int x1=150,            // x1 & x2 are the edges of the current piece of the road
       x2=170,
       y=0;               // y is the current y position of the piece of road
   // draw a road to nowhere
@@ -66,16 +64,11 @@ void redraw_road(curr_color_index){
   al_flip_display();
 }
 int main(void){
-  int index,           // loop var
-      x1=150,            // x1 & x2 are the edges of the current piece of the road
-      x2=170,
-      y=0,               // y is the current y position of the piece of road
-      curr_color_index=1;      // the current color being drawn
-  bool doexit = false;
-  ALLEGRO_TIMER *timer = NULL;
+  int curr_color_index=1;      // the current color being drawn
   bool redraw = true;
 
 
+  ALLEGRO_TIMER *timer = NULL;
   ALLEGRO_DISPLAY *display = NULL;
   ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 
@@ -109,10 +102,11 @@ int main(void){
     return -1;
   }
 
-  bool primitives = al_init_primitives_addon();
-  if(!primitives) {
+  if(!al_init_primitives_addon()) {
     fprintf(stderr, "failed to create primitives addon!\n");
     al_destroy_display(display);
+    al_destroy_timer(timer);
+    al_destroy_event_queue(event_queue);
     return -1;
   }
 
@@ -144,7 +138,7 @@ int main(void){
       redraw = false;
       if (++curr_color_index>255)
         curr_color_index=1;
-        redraw_road(curr_color_index);
+      redraw_road(curr_color_index);
     }
   }
 
