@@ -134,8 +134,7 @@ for (index=0; index<NUM_STARS; index++)
                // set velocity and color
 
                stars[index].plane = 1;
-               /* stars[index].color = al_map_rgb(0, 0, 8); */
-               stars[index].color = al_map_rgb(255, 255, 247);
+               stars[index].color = al_map_rgb(67, 67, 67);
 
                } break;
 
@@ -143,7 +142,7 @@ for (index=0; index<NUM_STARS; index++)
                {
 
                stars[index].plane = 2;
-               stars[index].color = al_map_rgb(255, 255, 248);
+               stars[index].color = al_map_rgb(154, 154, 154);
 
                } break;
 
@@ -151,7 +150,7 @@ for (index=0; index<NUM_STARS; index++)
                {
 
                stars[index].plane = 3;
-               stars[index].color = al_map_rgb(255, 255, 240);
+               stars[index].color = al_map_rgb(255, 255, 255);
 
                } break;
 
@@ -168,8 +167,8 @@ void draw_stars(){
 
   al_clear_to_color(al_map_rgb(0,0,0));
 
-  al_draw_text(default_font, al_map_rgb(255,255,255), 320/2, 0, ALLEGRO_ALIGN_CENTRE, "Press '+' or '-' to change speed.");
-  al_draw_text(default_font, al_map_rgb(255,255,255), 320/2, 190, ALLEGRO_ALIGN_CENTRE, "Press 'Q' to exit.");
+  al_draw_text(default_font, al_map_rgb(1,0,112), 0, 0, ALLEGRO_ALIGN_LEFT, "Press '+' or '-' to change speed.");
+  al_draw_text(default_font, al_map_rgb(21,158,2), 320/2, 190, ALLEGRO_ALIGN_CENTRE, "Press 'Q' to exit.");
   for (int index=0; index<NUM_STARS; index++){
     // erase the star
 
@@ -255,15 +254,6 @@ int main(void){
             break;
         }
     }
-
-
-     // draw the directions again
-
-
-     /* Blit_String(0,0,1, "Press '+' or '-' to change speed.",1); */
-
-     /* Blit_String(88,180,2, "Press 'Q' to exit.",1); */
-
 
     if(redraw && al_is_event_queue_empty(event_queue)) {
       redraw = false;
